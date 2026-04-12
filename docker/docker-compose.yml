@@ -1,0 +1,12 @@
+services:
+  mysql:
+    container_name: 'mysql-finance'
+    image: 'mysql:8.4.7'
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=123'
+      - 'MYSQL_USER=admin'
+      - 'MYSQL_PASSWORD=123'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
