@@ -1,7 +1,7 @@
 services:
   mysql:
     container_name: 'mysql-finance'
-    image: 'mysql:8.0.0'
+    image: 'mysql:8.0.35'
     environment:
       - 'MYSQL_ROOT_PASSWORD=root123'
       - 'MYSQL_DATABASE=financedb'
