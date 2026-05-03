@@ -1,5 +1,6 @@
 package finance.system.project.security;
 
+import finance.system.project.domain.user.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -14,6 +15,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+
+import static org.springframework.util.ClassUtils.isPresent;
 
 @Service
 public class JwtService {
@@ -38,7 +41,15 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> claims = new HashMap<>();
+
+        claims.put("role", userDetails.getAuthorities()
+                .stream()
+                .findFirst()
+                .map(auth -> auth.getAuthority())
+                .orElseThrow(() -> new IllegalStateException("User has no authorities")));
+
+        return generateToken(claims, userDetails);
     }
 
     private String buildToken(
