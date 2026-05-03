@@ -1,4 +1,11 @@
 package finance.system.project.exeception;
 
-public class ErrorResponse {
-}
+import java.time.LocalDateTime;
+
+public record ErrorResponse(
+        int status,
+        String error,
+        String message,
+        String path,
+        LocalDateTime timestamp
+) {}
