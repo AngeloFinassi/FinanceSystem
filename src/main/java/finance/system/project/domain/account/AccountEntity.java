@@ -59,4 +59,5 @@ public class AccountEntity {
     private UserEntity user;
 
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
