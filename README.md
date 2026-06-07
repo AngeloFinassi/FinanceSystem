@@ -465,10 +465,5 @@ All errors follow a consistent format:
 - [ ] Swagger / OpenAPI UI documentation
 - [ ] Unit tests (JUnit 5 + Mockito)
 - [ ] Integration tests (@WebMvcTest)
-- [ ] CORS configuration for frontend integration
 
 ---
-
-## License
-
-This project is licensed under the MIT License.
